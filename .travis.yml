@@ -3,7 +3,9 @@ python:
   - "3.7"
   - "3.8"
 
-env:
+install:
   - pip install pipenv
   - pipenv install --dev
 
+script:
+  - python manage.py test
