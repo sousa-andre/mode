@@ -8,4 +8,4 @@ env:
   - pipenv run
 
 script:
-  - py manage.py test
+  - python manage.py test
