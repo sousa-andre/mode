@@ -1,0 +1,13 @@
+<div class="card-menu">
+    <div class="card-menu-icon">
+        <i class="fas fa-ellipsis-h"></i>
+    </div>
+    <div class="card-menu-dropdown">
+        {% if perms.events.manage_event %}
+            <a class="card-menu-dropdown-link" href="{% url 'events:update' event.id %}">Atualizar</a>
+        {% endif %}
+        {% if perms.events.manage_event %}
+            <a class="card-menu-dropdown-link" href="{% url 'events:delete' event.id %}">Eliminar</a>
+        {% endif %}
+    </div>
+</div>

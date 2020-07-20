@@ -1,0 +1,113 @@
+{% load static %}
+{% load urls %}
+<div class="overlay"></div>
+<div class="navbar-container {% block navbar_container_classes %}{% endblock navbar_container_classes %}">
+    <div class="navbar">
+        <div class="item lh">
+            {% if user.is_authenticated %}
+                <div class="hamburger-menu">
+                    <span class="bar bar1"></span>
+                    <span class="bar bar2"></span>
+                    <span class="bar bar3"></span>
+                </div>
+            {% endif %}
+            <a href="{% url 'home' %}" id="logo" style="display: flex; align-items: center; height: 100%">
+                <img src="{% static 'images/logo_text_2.svg' %}" alt="esmaior logo">
+            </a>
+        </div>
+        <div class="item rh">
+            <div class="inner-options">
+                {% if user.is_authenticated %}
+                    <div id="notification">
+                        <div class="notification-icon">
+                            <i class="far fa-bell" style="font-size: 20px; padding: 10px 10px; cursor: pointer;"></i><span style="background: #a70f0f;
+                            padding: 5px 10px; color: white; border-radius: 5px; user-select: none">{{ request.user_notifications.count }}</span>
+                        </div>
+                        <div class="notification-dropdown">
+                            {% for notification in request.user_notifications %}
+                                <a href="{% url 'notifications:click' notification.id  %}">
+                                    <div class="notification-dropdown-item">
+                                        <h4>{{ notification.title }}</h4>
+                                        <h4>{{ notification.description }}</h4>
+                                    </div>
+                                </a>
+                                {% empty %}
+                                <div class="notification-dropdown-item">
+                                    Sem Notificações
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <a href="{% url 'profile' %}" title="Perfil">
+                            <div style="border-radius: 50%; width: 35px; height: 35px; background-image: url('{{ user.picture.url }}'); background-size: cover;background-position: center">
+                        </div>
+                    </a>
+                    <a href="{% url 'logout' %}">Terminar Sessão</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Entrar</a>
+                    <a href="{% url 'student-registration' %}" class="inverse">Registar</a>
+                {% endif %}
+            </div>
+            <div class="sidebar">
+                <a class="link " href="{% url 'events:list' %}">
+                    <span class="icon"><i class="fas fa-calendar-week"></i></span>
+                    <span class="text">Eventos</span>
+                </a>
+                {% if request.user_subjects.count > 0 %}
+                    <a class="link" href="{% url 'klass:class-detail' %}">
+                        <span class="icon"><i class="fas fa-chalkboard"></i></span>
+                        <span class="text">A minha Turma</span>
+                    </a>
+                {% endif %}
+                {% if perms.forum.create_view_post %}
+                    <a class="link" href="{% url 'forum:list' %}">
+                        <span class="icon"><i class="fas fa-comments"></i></span>
+                        <span class="text">Forum</span>
+                    </a>
+                {% endif %}
+                {% if perms.studygroups.view_studygroup %}
+                    <a class="link" href="{% url 'studygroups:list' %}">
+                        <span class="icon"><i class="fas fa-school"></i></span>
+                        <span class="text">Grupos de Estudo</span>
+                    </a>
+                {% endif %}
+                {% if perms.polls.manage_view_poll %}
+                    <a class="link" href="{% url 'polls:list' %}">
+                        <span class="icon"><i class="fas fa-poll"></i></span>
+                        <span class="text">Votações</span>
+                    </a>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                    <a class="link" href="{% url 'accounts:list' %}">
+                        <span class="icon"><i class="fas fa-user-friends"></i></span>
+                        <span class="text">Utilizadores</span>
+                    </a>
+                {% endif %}
+                {% if perms.classes.manage_view_class %}
+                    <a class="link" href="{% url 'classes:list' %}">
+                        <span class="icon"><i class="fas fa-users"></i></span>
+                        <span class="text">Turmas</span>
+                    </a>
+                {% endif %}
+                {% if perms.subjects.manage_view_subject %}
+                    <a class="link" href="{% url 'subjects:list' %}">
+                        <span class="icon"><i class="fas fa-layer-group"></i></span>
+                        <span class="text">Disciplinas</span>
+                    </a>
+                {% endif %}
+                {% if perms.courses.manage_view_course %}
+                    <a class="link" href="{% url 'courses:list' %}">
+                        <span class="icon"><i class="fas fa-layer-group"></i></span>
+                        <span class="text">Cursos</span>
+                    </a>
+                {% endif %}
+                <a class="link" href="{% url 'faq:list' %}">
+                    <span class="icon"><i class="fas fa-question"></i></span>
+                    <span class="text">Informações</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

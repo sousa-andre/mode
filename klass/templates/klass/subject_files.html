@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            {{ subject.subject.short_name }}
+        </div>
+        <div class="header-content">
+            {{ subject.subject }}
+        </div>
+        <div class="header-options">
+            <a href="{% url 'klass:class-detail' %}">
+                <button class="clickable grey">Lista de Disciplinas</button>
+            </a>
+            {% if request.user == subject.teacher %}
+                <a href="{% url 'klass:appointment-create' subject.pk %}">
+                    <button>Adicionar à Agenda</button>
+                </a>
+                <a href="{% url 'klass:subject-file-create' subject.pk %}">
+                    <button>Adicionar Ficheiro</button>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        Ficheiros
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="list">
+                        {% for file in subject.files.all %}
+                            <a href="{{ file.file.url }}" target="_blank">
+                                <div class="list-item">
+                                    {% if  file.extension == 'pdf'%}
+                                        <i class="far fa-file-pdf"></i>
+                                    {% elif file.extension == 'doc' or file.extension == 'docx' %}
+                                        <i class="far fa-file-word"></i>
+                                    {% elif file.extension == 'ppt' or file.extension == 'pptx '%}
+                                        <i class="far fa-file-powerpoint"></i>
+                                    {% elif file.extension == 'png' or file.extension == 'jpg' or file.extension == 'jpeg' %}
+                                        <i class="far fa-file-image"></i>
+                                    {% else %}
+                                        <i class="far fa-file"></i>
+                                    {% endif %}
+
+                                    {{ file.file.name }}
+                                </div>
+                            </a>
+                        {% empty %}
+                            <p>Sem ficheiros</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock content %}

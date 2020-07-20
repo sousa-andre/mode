@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Alunos da turma {{ class.grade }}º {{ class.abc }} - {{ class.get_years_range }}
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Adicionar Aluno
+                </div>
+            </div>
+            <div class="card-content">
+                <form method="post">
+                    {% csrf_token %}
+                    {% include 'includes/form.html' %}
+                    <div class="card-content-options">
+                        <input type="submit" class="input-submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Lista de Alunos
+                </div>
+            </div>
+            <div class="table-filters">
+                {% include 'includes/search.html' %}
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Opções</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in class.students.all %}
+                        <tr>
+                            <td>{{ student.get_full_name }}</td>
+                            <td>{{ student.email }}</td>
+                            <td><a href="{% url 'classes:student-delete' class.id student.id %}"><i class="fas fa-user-minus"></i> Remover da turma</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% include 'includes/pagination.html' %}
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% for field in form.visible_fields %}
+    {% if group|default_if_none:True %}
+        <div class="input-group">
+    {% endif %}
+{% if not label %}
+    {{ field.label_tag }}
+{% else %}
+    {{ label }}
+{% endif %}
+{{ field }}
+<div class="form-errors">
+    {% for error in field.errors %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endfor %}
+</div>
+{% if group|default_if_none:True %}
+    </div>
+{% endif %}
+{% endfor %}
+<div class="form-errors">
+    {% for error in form.non_field_errors %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endfor %}
+</div>

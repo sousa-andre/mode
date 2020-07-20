@@ -1,0 +1,10 @@
+{% load urls %}
+<div class="subnavbar-container">
+    <div class="menu subnavbar">
+        <a href="{% url 'courses:list-create' %}" class="item {% active_view 'list-create' %}">
+                <span class="data">
+                    Consultar & Criar
+                </span>
+        </a>
+    </div>
+</div>

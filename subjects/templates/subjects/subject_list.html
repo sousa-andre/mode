@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Disciplinas
+        </div>
+        <div class="header-content">
+            As disciplinas criadas podem ser associadas a uma turma posteriormente.
+        </div>
+        <div class="header-options">
+            <a href="{% url 'subjects:create' %}">
+                <button>Criar disciplina</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Todas as Disciplinas
+                </div>
+                <div class="card-header-description">
+                    Apenas podem ser removidas disciplinas que não estejam já, relacionadas com uma turma.
+                </div>
+            </div>
+            <div class="card-content">
+                {% include 'includes/search.html' %}
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Abreviação</th>
+                                <th>Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for subject in subjects %}
+                                <tr>
+                                    <td>{{ subject.name }}</td>
+                                    <td>{{ subject.short_name }}</td>
+                                    <td><a href="{% url 'subjects:delete' subject.id %}"><button class="small yellow">Atualizar</button></a><a href="{% url 'subjects:delete' subject.id %}"><button class="small red">Eliminar</button></a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% include 'includes/pagination.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

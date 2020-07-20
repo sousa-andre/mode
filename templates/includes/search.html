@@ -1,0 +1,8 @@
+<div class="table-filters">
+    <form method="get">
+        <div class="filter">
+            <input name="filtro" type="text" class="text-search" placeholder="Pesquisar..."
+                   value="{{ request.GET.filtro|default_if_none:'' }}">
+        </div>
+    </form>
+</div>

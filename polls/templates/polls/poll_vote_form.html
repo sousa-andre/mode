@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            {{ poll.title }}
+        </div>
+        <div class="header-title-description">
+            {{ poll.description }}
+        </div>
+    </div>
+    <div class="page">
+        <form method="post">
+            {% csrf_token %}
+            {{ question_formset.management_form }}
+            {% for question_form in question_formset %}
+                <div class="card">
+                    <div class="input-group">
+                        <div class="card-header">
+                            <div class="card-header-title">
+                                {{ question_form.score.label }}
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            {{ question_form.score }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="card-content-options">
+                <input type="submit" value="Votar">
+                <a href="{% url 'polls:list' %}">
+                    <button type="button" class="grey-inverted no-border">Cancelar</button>
+                </a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

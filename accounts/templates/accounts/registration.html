@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Registar
+        </div>
+    </div>
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                <span class="title">Registar</span>
+            </div>
+            <div class="card-content">
+                <div class="card-content-element">
+                    <form method="post">
+                        {% csrf_token %}
+                        {% include 'includes/form.html' %}
+                        <div class="row">
+                            <input type="submit" value="Registar">
+                            <a href="{% url 'login' %}">
+                                <button type="button" class="grey-inverted no-border">
+                                    Já possui conta? Iniciar sessão
+                                </button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

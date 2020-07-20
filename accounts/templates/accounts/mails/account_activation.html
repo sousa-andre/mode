@@ -1,0 +1,2 @@
+OLá {{ user.get_full_name }},
+Por favor confirme o seu registo através do link http://{{ request.get_host }}{% url 'accounts:activation' user_id token %}}.

@@ -1,0 +1,393 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-06 23:25+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\accounts\models.py:26
+msgid "first name"
+msgstr ""
+
+#: .\accounts\models.py:27
+msgid "last name"
+msgstr "Apelido"
+
+#: .\accounts\models.py:28
+msgid "e-mail"
+msgstr "e-mail"
+
+#: .\accounts\models.py:29
+msgid "picture"
+msgstr "foto"
+
+#: .\accounts\models.py:30
+msgid "is active"
+msgstr "ativo"
+
+#: .\accounts\models.py:31
+msgid "is superuser"
+msgstr "administrador"
+
+#: .\accounts\views.py:45
+msgid "Account Registration Confirmation"
+msgstr "Confirmação do Registo da Conta"
+
+#: .\accounts\views.py:52
+msgid ""
+"Account created successfully! Please check your email to confirm your "
+"account."
+msgstr ""
+"Conta criada com sucesso! Por favor verifique a sua conta de "
+"e-mail."
+
+#: .\accounts\views.py:81
+msgid "The user was successfully created."
+msgstr "O utilizador foi criado com sucesso."
+
+#: .\accounts\views.py:92
+msgid "The user was successfully updated."
+msgstr "O utilizador foi atualizado com sucesso."
+
+#: .\accounts\views.py:121
+msgid "The Profile was successfully updated."
+msgstr "O perfil foi atualizado com sucesso."
+
+#: .\accounts\views.py:129
+msgid "Password successfully updated."
+msgstr "Palavra passe atualizada com sucesso."
+
+#: .\accounts\views.py:144
+msgid "Account successfully activated."
+msgstr "Conta ativada com sucesso."
+
+#: .\accounts\views.py:146
+msgid "Invalid activation link."
+msgstr "Link de ativação inválido"
+
+#: .\classes\models.py:15
+msgid "current year"
+msgstr "ano atual"
+
+#: .\classes\models.py:16
+msgid "grade"
+msgstr "ano escolar"
+
+#: .\classes\models.py:17 .\classes\models.py:35
+msgid "class"
+msgstr "turma"
+
+#: .\classes\models.py:19
+msgid "director"
+msgstr "diretor de turma"
+
+#: .\classes\models.py:20
+msgid "course"
+msgstr "curso"
+
+#: .\classes\models.py:21
+msgid "students"
+msgstr "alunos"
+
+#: .\classes\models.py:34
+msgid "subject"
+msgstr "disciplina"
+
+#: .\classes\models.py:36
+msgid "teacher"
+msgstr "professor"
+
+#: .\classes\views.py:43
+msgid "The class successfully created."
+msgstr "A turma foi criada com sucesso."
+
+#: .\classes\views.py:51
+msgid "The class was successfully updated."
+msgstr "A turma foi atualizada com sucesso."
+
+#: .\classes\views.py:62
+msgid "Class was successfully removed."
+msgstr "A turma foi removida com sucesso."
+
+#: .\classes\views.py:77
+msgid "There's no student with the following email."
+msgstr "Não existe nenhum aluno com o e-mail inserido."
+
+#: .\classes\views.py:81
+msgid "The Student was successfully added."
+msgstr "O aluno foi adicionado com sucesso."
+
+#: .\classes\views.py:83
+msgid "Added to a new class"
+msgstr "Adicionado a uma nova turma"
+
+#: .\classes\views.py:84
+msgid "You have been added to the class {}."
+msgstr "Foi adicionado à turma {}."
+
+#: .\classes\views.py:110
+msgid "The student was successfully removed."
+msgstr "O aluno foi removido com sucesso."
+
+#: .\classes\views.py:125
+msgid "The subject was successfully added."
+msgstr "A disciplina foi adicionada com sucesso."
+
+#: .\courses\models.py:8
+msgid "Regular"
+msgstr "Regular"
+
+#: .\courses\models.py:9
+msgid "Professional"
+msgstr "Profissional"
+
+#: .\courses\models.py:11 .\subjects\models.py:7
+msgid "name"
+msgstr "nome"
+
+#: .\courses\models.py:12 .\subjects\models.py:8
+msgid "short name"
+msgstr "abreviação"
+
+#: .\courses\models.py:13
+msgid "type"
+msgstr "tipo"
+
+#: .\courses\views.py:20
+msgid "The course was successfully updated."
+msgstr "O curso foi atualizado com sucesso."
+
+#: .\courses\views.py:48
+msgid "The course was successfully created."
+msgstr "O curso foi criado com sucesso."
+
+#: .\courses\views.py:58
+msgid "The course was successfully removed."
+msgstr "O curso foi removido com sucesso."
+
+#: .\events\models.py:9 .\forum\models.py:10 .\polls\models.py:8
+msgid "title"
+msgstr "título"
+
+#: .\events\models.py:10
+msgid "image"
+msgstr "imagem"
+
+#: .\events\models.py:11 .\polls\models.py:13
+msgid "content"
+msgstr "conteúdo"
+
+#: .\events\models.py:12
+msgid "creation date"
+msgstr "data da criação"
+
+#: .\events\models.py:13
+msgid "creator"
+msgstr "criador"
+
+#: .\events\views.py:25
+msgid "The event was successfully created."
+msgstr "O evento foi criado com sucesso."
+
+#: .\events\views.py:47
+msgid "The event was successfully updated."
+msgstr "O evento foi atualizado com sucesso."
+
+#: .\events\views.py:58
+msgid "The event was successfully removed."
+msgstr "O evento foi removido com sucesso."
+
+#: .\faq\views.py:27
+msgid "The topic was successfully created."
+msgstr "O tópico foi criado com sucesso."
+
+#: .\faq\views.py:35
+msgid "The topic was successfully updated."
+msgstr "O tópico foi atualizado com sucesso."
+
+#: .\faq\views.py:48
+msgid "The topic was successfully removed."
+msgstr "O tópico foi removido com sucesso."
+
+#: .\forum\models.py:11
+msgid "post content"
+msgstr "comentário da postagem"
+
+#: .\forum\models.py:23
+msgid "like"
+msgstr "gosto"
+
+#: .\forum\models.py:31
+msgid "comment content"
+msgstr "conteúdo do comentário"
+
+#: .\forum\views.py:43
+msgid "The post was created successfully."
+msgstr "A postagem foi criada com sucesso."
+
+#: .\forum\views.py:72
+msgid "The comment was successfully added."
+msgstr "O comentário foi adicionado com sucesso."
+
+#: .\forum\views.py:74
+msgid "New post comment"
+msgstr "Novo comentário numa postagem"
+
+#: .\forum\views.py:75
+msgid "Someone added a comment into your forum post"
+msgstr "Alguém adicionou um comentário num postagem seu"
+
+#: .\forum\views.py:97
+msgid "Post successfully deleted."
+msgstr "Postagem removida com sucesso."
+
+#: .\klass\forms.py:28
+msgid "The start time must be earlier than end time."
+msgstr "O tempo de início deve ser anterior ao final."
+
+#: .\klass\views.py:41
+msgid "The file was successfully added."
+msgstr "O ficheiro foi adicionado com sucesso."
+
+#: .\klass\views.py:56
+msgid "The file was successfully updated."
+msgstr "O ficheiro foi atualizado com sucesso."
+
+#: .\klass\views.py:63
+msgid "The file was successfully removed"
+msgstr "O ficheiro foi removido com sucesso."
+
+#: .\klass\views.py:77
+msgid "The appointment was successfully created."
+msgstr "O agendamento foi criado com sucesso."
+
+#: .\klass\views.py:93
+msgid "The appointment was successfully updated."
+msgstr "O agendamento foi criado com sucesso."
+
+#: .\klass\views.py:100
+msgid "The appointment was successfully removed."
+msgstr "O agendamento foi criado com sucesso."
+
+#: .\mode\settings\common.py:96
+msgid "Portuguese"
+msgstr "Portugês"
+
+#: .\polls\models.py:9 .\studygroups\models.py:12
+msgid "description"
+msgstr "descrição"
+
+#: .\polls\models.py:29
+msgid "Very bad"
+msgstr "Muito mau"
+
+#: .\polls\models.py:30
+msgid "Bad"
+msgstr "Mau"
+
+#: .\polls\models.py:31
+msgid "Satisfactory"
+msgstr "Satisfatório"
+
+#: .\polls\models.py:32
+msgid "Good"
+msgstr "Bom"
+
+#: .\polls\models.py:33
+msgid "Excellent"
+msgstr "Excelente"
+
+#: .\polls\views.py:50
+msgid "The poll was successfully created."
+msgstr "A sondagem foi criada com sucesso."
+
+#: .\polls\views.py:68
+msgid "Only students can vote"
+msgstr "Apenas alunos podem votar."
+
+#: .\polls\views.py:71
+msgid "You already voted for this poll."
+msgstr "Já votastes nesta sondagem."
+
+#: .\polls\views.py:86
+msgid "The poll was successfully updated.!"
+msgstr "A sondagem foi atualizada com sucesso."
+
+#: .\polls\views.py:117
+msgid "The poll was successfully removed."
+msgstr "A sondagem foi removida com sucesso."
+
+#: .\studygroups\models.py:11
+msgid "group name"
+msgstr "nome do grupo"
+
+#: .\studygroups\models.py:13
+msgid "registration datetime"
+msgstr "data e hora do registo"
+
+#: .\studygroups\models.py:18
+msgid "is approved"
+msgstr "aprovado"
+
+#: .\studygroups\models.py:20
+msgid "created by"
+msgstr "criado por"
+
+#: .\studygroups\views.py:33
+msgid "The study group was successfully created."
+msgstr "O grupo de estudo foi criado com sucesso."
+
+#: .\studygroups\views.py:47
+msgid "The study group was successfully updated."
+msgstr "O grupo de estudo foi atualizado com sucesso."
+
+#: .\studygroups\views.py:59
+msgid "The study group was successfully deleted."
+msgstr "O grupo de estudo foi removido com sucesso."
+
+#: .\studygroups\views.py:70
+msgid "One of the study groups you were participating in was deleted."
+msgstr "Um dos grupos de estudos em que participavas foi removido."
+
+#: .\studygroups\views.py:71
+msgid "The group {group_name} was removed."
+msgstr "O grupo {group_name} foi removido."
+
+#: .\studygroups\views.py:96
+msgid "The study group subscription was successfully removed."
+msgstr "Subscrição do grupo de estudo removida com sucesso."
+
+#: .\studygroups\views.py:99
+msgid "The study group subscription was registered."
+msgstr "A subscrição do grupo de estudo foi registada."
+
+#: .\subjects\views.py:20
+msgid "The subject was successfully created."
+msgstr "A disciplina foi criada com sucesso."
+
+#: .\subjects\views.py:41
+msgid "The subject was successfully updated."
+msgstr "A disciplina foi atualizada com sucesso."
+
+#: .\subjects\views.py:51
+msgid "The subject was successfully removed."
+msgstr "A disciplina foi removida com sucesso."
+
+
+# custom
+msgid "New poll was created"
+msgstr "Nova votação criada"
+
+msgid "A new poll was created. Please proceed to vote."
+msgstr "Uma nova votação foi criada. Por favor prossiga à votação."

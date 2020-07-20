@@ -1,0 +1,64 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block head %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+{% endblock head %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Votação
+        </div>
+        <div class="header-options">
+            <a href="{% url 'polls:delete' poll.pk %}"><button class="red">Apagar Votação</button></a>
+        </div>
+    </div>
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    {{ poll.title }}
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="charts-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'polls/scripts/chart.js' %}"></script>
+    <script>
+        const chartsContainer = document.querySelector('#charts-container');
+        let chartDiv;
+        let canvas;
+        let ctx;
+
+        {% for question in poll.questions.all %}
+            chartDiv = document.createElement('div');
+            chartDiv.setAttribute('class', 'card');
+
+            chartDivHeader = document.createElement('div');
+            chartDivHeader.setAttribute('class', 'card-header');
+
+            chartDivHeaderTitle = document.createElement('div');
+            chartDivHeaderTitle.setAttribute('class', 'card-header-title');
+
+            chartDivHeaderTitle.appendChild(document.createTextNode('{{ question.content }}'));
+
+            chartDivHeader.appendChild(chartDivHeaderTitle);
+            chartDiv.appendChild(chartDivHeader);
+
+
+            chartDivContent = document.createElement('div');
+            chartDivContent.setAttribute('class', 'card-content');
+
+            canvas = document.createElement('canvas');
+            ctx = canvas.getContext('2d');
+
+            chartDivContent.appendChild(canvas);
+            chartDiv.appendChild(chartDivContent);
+            chartsContainer.appendChild(chartDiv);
+
+            new SatisfactionChart(ctx,  {{ question.answers_array }});
+        {% endfor %}
+    </script>
+{% endblock content %}

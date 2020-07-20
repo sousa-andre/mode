@@ -1,0 +1,22 @@
+{% extends 'layouts/form.html' %}
+{% block content_header %}
+    <div class="header-title">
+        {% if post %}
+            Atualizar a Postagem
+        {% else %}
+            Criar Postagem
+        {% endif %}
+    </div>
+{% endblock %}
+{% block form_buttons %}
+    {% if post %}
+        <input type="submit" value="Atualizar">
+    {% else %}
+        <input type="submit" value="Publicar">
+    {% endif %}
+    <a href="{% url 'forum:list' %}">
+        <button type="button" class="grey-inverted no-border">
+            Cancelar
+        </button>
+    </a>
+{% endblock form_buttons %}

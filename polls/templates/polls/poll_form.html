@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Nova votação
+        </div>
+        <div class="header-content">
+            O grupo selecionado irá receber uma notificação para preencher o questionário.
+        </div>
+    </div>
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Criar Votação
+                </div>
+            </div>
+            <div class="card-content">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ questions_formset.management_form }}
+                    {% include 'includes/form.html' with form=poll_form %}
+                    <h4>Perguntas</h4>
+                    <div id="form_set">
+                        {% for form in questions_formset.forms %}
+                            {% include 'includes/form.html' with label='Pergunta' %}
+                        {% endfor %}
+                    </div>
+                    <div class="card-content-options close">
+                        <button type="button" class="clickable green" id="add-new">Novo</button>
+                        <button type="button" class="clickable red" id="remove-last">Remover</button>
+                    </div>
+                    <div class="card-content-options">
+                        <input type="submit">
+                        <a href="{% url 'polls:list' %}">
+                            <button type="button" class="grey-inverted no-border">Cancelar</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="empty-form" style="display: none;">
+        {% include 'includes/form.html' with form=questions_formset.empty_form label='Pergunta' group=False %}
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'polls/scripts/formset.js' %}"></script>
+{% endblock scripts %}

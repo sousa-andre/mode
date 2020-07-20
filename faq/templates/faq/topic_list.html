@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            FAQ
+        </div>
+        <div class="header-options">
+            {% if faq.add_topic %}
+                <a href="{% url 'faq:create' %}">
+                    <button>Criar Tópico</button>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="page">
+        {% for topic in topics %}
+            <div class="card">
+                <div class="card-menu">
+                    <div class="card-menu-icon">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <div class="card-menu-dropdown">
+                        {% if perms.faq.change_topic %}
+                            <a class="card-menu-dropdown-link" href="{% url 'faq:update' topic.pk %}">Editar</a>
+                        {% endif %}
+                        {% if perms.faq.delete_topic %}
+                            <a class="card-menu-dropdown-link" href="{% url 'faq:delete' topic.pk %}">Eliminar</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-header">
+                    <div class="card-header-title">
+                        {{ topic.title }}
+                    </div>
+                </div>
+                <div class="card-content">
+                    {{ topic.content }}
+                </div>
+            </div>
+        {% empty %}
+            <p>Sem tópicos</p>
+        {% endfor %}
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script src="{% static 'scripts/card-menu.js' %}"></script>
+{% endblock scripts %}

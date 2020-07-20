@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Votações
+        </div>
+        <div class="header-content">
+                As votações são criadas por elementos da escola para fazer um acompanhamento progressivo da satisfação dos alunos.
+        </div>
+        <div class="header-options">
+            <a href="{% url 'polls:create' %}">
+                <button type="button">
+                    Criar Votação
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="page">
+    {% for poll in polls %}
+        <div class="card">
+            <div class="card-content">
+                <a href="{% url 'polls:detail' poll.id %}">
+                    {{ poll.title }}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock content %}

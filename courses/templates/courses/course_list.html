@@ -1,0 +1,49 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Cursos
+        </div>
+        <div class="header-content">
+            Todas as turmas precisam de ser associadas com um curso.
+        </div>
+        <div class="header-options">
+            <a href="{% url 'courses:create' %}">
+                <button>
+                    Criar Curso
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Lista de Cursos
+                </div>
+            </div>
+            <div class="card-content">
+                {% include 'includes/search.html' %}
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Abreviação</th>
+                            <th>Tipo</th>
+                            <th>Opções</th>
+                        </tr>
+                        {% for course in courses %}
+                            <tr>
+                                <td>{{ course.name }}</td>
+                                <td>{{ course.short_name }}</td>
+                                <td>{{ course.get_type_display }}</td>
+                                <td><a href="{% url 'courses:update' course.pk %}"><button class="small yellow">Atualizar</button></a><a href="{% url 'courses:delete' course.pk %}"><button class="small red">Eliminar</button></a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% include 'includes/pagination.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

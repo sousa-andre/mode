@@ -1,0 +1,10 @@
+<div class="card-menu">
+    <div class="card-menu-icon">
+        <i class="fas fa-ellipsis-h"></i>
+    </div>
+    <div class="card-menu-dropdown">
+        {% if perms.forum.delete_post or request.user == post.author %}
+            <a href="{% url 'forum:delete' post.id %}" class="card-menu-dropdown-link">Remover</a>
+        {% endif %}
+    </div>
+</div>

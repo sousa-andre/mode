@@ -1,0 +1,172 @@
+@import 'fontawesome5.13/fontawesome';
+@import 'fontawesome5.13/solid';
+@import 'fontawesome5.13/brands';
+@import 'fontawesome5.13/regular';
+
+@import 'resets';
+@import 'lists';
+@import 'messages';
+@import 'details';
+@import 'forms';
+@import 'menu';
+@import 'mixins';
+@import 'utilities';
+
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #f1f4f6;
+    box-sizing: border-box;
+    color: #2a2727;
+}
+
+.app {
+    width: 100%;
+    padding-top: 70px;
+    margin: 0 auto;
+
+    .content {
+        overflow-y: auto;
+    }
+}
+
+.page {
+    width: 93%;
+    margin: 0 auto;
+}
+
+
+.header {
+    padding: 20px 20px 10px 20px;
+
+    &-title {
+        font-size: 1.5rem;
+    }
+    &-content {
+        font-size: .8rem;
+        margin: 0.5rem auto;
+    }
+    &-options {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+}
+
+.card {
+    position: relative;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto 10px auto;
+    box-shadow:
+            0 0.46875rem 2.1875rem rgba(8,10,37,.03),
+            0 0.9375rem 1.40625rem rgba(8,10,37,.03),
+            0 0.25rem 0.53125rem rgba(8,10,37,.05),
+            0 0.125rem 0.1875rem rgba(8,10,37,.03);
+    border-radius: .25rem;
+    padding: 15px 15px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &-menu {
+        position: absolute;
+        right: 20px;
+        user-select: none;
+
+        &-icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        &-dropdown {
+            background-color: white;
+            position: absolute;
+            display:none;
+            top: 30px;
+            flex-direction: column;
+            right: 0;
+            box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.2);
+
+            &-link {
+                padding: .8rem 1rem;
+                text-align: center;
+
+                &:hover {
+                    background-color: #f3f3f3;
+                }
+            }
+        }
+    }
+
+    &-header {
+        background: none;
+        margin-bottom: 10px;
+        padding: 0 0 10px 0;
+        color: #595b83;
+
+        &-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-weight: bold;
+            font-size: 1rem;
+
+            &-options {
+                margin: 5px 10px 5px 0;
+            }
+        }
+
+        &-description {
+            font-size: 0.8rem;
+        }
+    }
+    &-content {
+        &-options {
+            display: flex;
+            margin: 15px 0 5px 0;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+
+            &.close {
+                justify-content: flex-end;
+            }
+        }
+        &-image {
+            margin-top: 20px;
+        }
+    }
+}
+
+.list {
+    &-item {
+        padding: .8rem;
+        border: 1px solid rgb(222, 223, 224);
+        border-radius: 3px;
+        margin-bottom: 5px;
+    }
+}
+
+.pagination {
+    margin: 10px 0;
+    font-size: .8rem;
+}
+
+
+@include desktop {
+    .app {
+        width: 80%;
+    }
+    .page {
+        width: 100%;
+    }
+    .header {
+        padding: 20px 0 10px 0;
+    }
+    .subnavbar-container {
+        background-color: white;
+    }
+}
+
+

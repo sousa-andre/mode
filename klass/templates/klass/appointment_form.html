@@ -1,0 +1,25 @@
+{% extends 'layouts/form.html' %}
+{% block content_header %}
+    <div class="header-title">
+        Agenda
+    </div>
+{% endblock content_header %}
+{% block form_header %}
+    <div class="card-header-title">
+        {% if appointment %}
+            Atualizar
+        {% else %}
+            Criar
+        {% endif %}
+    </div>
+{% endblock form_header %}
+{% block form_buttons %}
+    {% if appointment %}
+        <input type="submit" value="Atualizar">
+    {% else %}
+        <input type="submit" value="Agendar">
+    {% endif %}
+    <a href="{% url 'klass:class-detail' %}">
+        <button type="button" class="no-border grey-inverted">Cancelar</button>
+    </a>
+{% endblock form_buttons %}

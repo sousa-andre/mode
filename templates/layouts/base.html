@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="pt">
+<head>
+    <title>{% block title %}Mode{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{% static 'images/logo_text_2.svg' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="manifest" href="{% static 'pwa/manifest.webmanifest' %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    {% include 'menu.html' %}
+    <div class="card-menu-overlay"></div>
+    <div class="app{% block root_classes %}{% endblock root_classes %}">
+        {% block submenu %}{% endblock submenu %}
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="page-wrapper">
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+    <script src="{% static 'scripts/menu.js' %}"></script>
+    <script src="{% static 'scripts/notifications.js' %}"></script>
+    <script src="{% static 'pwa/sw_register.js' %}"></script>
+    {% block scripts %}{% endblock scripts %}
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Lista de Turmas
+        </div>
+        <div class="header-options">
+            <a href="{% url 'classes:create' %}">
+                <button>Criar</button>
+            </a>
+        </div>
+    </div>
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Listagem
+                </div>
+            </div>
+            <div class="card-content">
+                {% include 'includes/search.html' %}
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Ano Letivo</th>
+                            <th>Ano Escolar</th>
+                            <th>Curso</th>
+                            <th>Diretor de Turma</th>
+                            <th>Nº de Alunos</th>
+                            <th>Nº de Disciplinas</th>
+                            <th>Opções</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for class in classes %}
+                            <tr>
+                                <td>{{ class.year }} - {{ class.year|add:1 }}</td>
+                                <td>{{ class.grade }}º {{ class.klass }}</td>
+                                <td>{{ class.course.short_name }}</td>
+                                <td>{{ class.director.get_full_name }}</td>
+                                <td>{{ class.students.count }}</td>
+                                <td>{{ class.subjects.count }}</td>
+                                <td><a href="{% url 'classes:students' class.id %}"><button>Alunos</button></a><a href="{% url 'classes:subjects' class.id %}"><button>Disciplinas</button></a><a href="{% url 'classes:update' class.id %}"><button class="yellow">Atualizar Turma</button></a><a href="{% url 'classes:delete' class.pk %}"><button class="red">Eliminar Turma</button></a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% include 'includes/pagination.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

@@ -1,0 +1,63 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="header">
+        <div class="">
+            <div class="header-title">
+                Grupos de Estudo
+            </div>
+            <div class="header-content">
+                Os Grupos de Estudo podem ser utilizados de forma a arranjar alunos que desejem num projeto.
+            </div>
+        </div>
+        <div class="header-options">
+            {% if perms.studygroups.create_studygroup %}
+                <a href="{% url 'studygroups:create' %}">
+                    <button>Criar um Grupo de Estudo</button>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="page">
+        {% for study_group in study_groups %}
+        <div class="card">
+            <div class="card-menu">
+                <div class="card-menu-icon">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="card-menu-dropdown">
+                    {% if study_group.created_by == request.user or perms.studygroup.update_delete_studygroup %}
+                    <a class="card-menu-dropdown-link" href="{% url 'studygroups:update' study_group.id %}">Atualizar</a>
+                    <a class="card-menu-dropdown-link" href="{% url 'studygroups:delete' study_group.id %}">Eliminar</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-header">
+                <div class="card-header-title">
+                    {{ study_group.name }}
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="text-1">{{ study_group.content }}</div>
+
+                <div class="text-0_8 mt-10">{{ study_group.related_subjects.all|join:', ' }}</div>
+                <div class="text-1 mt-5">{{ study_group.participants.count }} Inscritos</div>
+
+                {% if perms.studygroups.subscribe_studygroup %}
+                    <form method="post" action="{% url 'studygroups:subscribe' study_group.id %}">
+                        {% csrf_token %}
+                        {% if request.user in study_group.participants.all %}
+                            <input type="submit" value="Remover Inscrição" class="red">
+                        {% else %}
+                            <input type="submit" value="Inscrever" class="green">
+                        {% endif %}
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script src="{% static 'scripts/card-menu.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,17 @@
+{% extends 'layouts/form.html' %}
+{% block content_header %}
+    <div class="header-title">
+        Adicionar Ficheiro
+    </div>
+    <div class="header-content">
+        Pode editar o ficheiro que adicionou mais tarde.
+    </div>
+{% endblock content_header %}
+{% block form_enctype %}multipart/form-data{% endblock form_enctype %}
+{% block form_buttons %}
+    <input type="submit" value="Adicionar Ficheiro">
+
+    <a href="{% url 'klass:subject-detail' view.kwargs.pk %}">
+        <button type="button" class="grey-inverted no-border">Cancelar</button>
+    </a>
+{% endblock form_buttons %}

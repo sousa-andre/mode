@@ -1,0 +1,7 @@
+{
+    "name": "MODE",
+    "short_name": "MODE",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#545cd8"
+}

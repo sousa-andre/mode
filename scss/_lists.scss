@@ -1,0 +1,89 @@
+.table-wrapper {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    line-height: 13px;
+    white-space: pre;
+
+    th, td {
+        padding: 15px 10px;
+        font-size: .9rem;
+    }
+
+    tbody tr {
+        box-shadow: 0 -1px 0 0 rgb(223, 220, 223);
+    }
+
+    tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+
+    text-align: left;
+}
+
+th, td {
+    text-align: left;
+}
+
+table tbody tr td {
+    a {
+        display: inline-block;
+        padding: 5px;
+        border-radius: 3px;
+        text-decoration: none;
+        color: black;
+    }
+
+    i {
+        font-size: 14px;
+        margin-right: 3px;
+    }
+}
+
+/* filter input */
+
+.table-filters {
+    .filter {
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+    &.text-search {
+        flex-grow: 2;
+    }
+
+    &.select-filter {
+        flex-grow: 1;
+    }
+}
+
+form.search-form {
+    width: 100%;
+}
+
+.search-button {
+    width: 35px;
+    height: 35px;
+    background-color: grey;
+    border: none;
+    color: white;
+    margin-right: 3px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    margin-top: 5px;
+
+    i {
+        color: inherit;
+    }
+
+    &:hover {
+        background-color: #919191;
+    }
+}
+
+.table-filters .text-search input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}

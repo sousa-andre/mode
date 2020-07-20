@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        {% block content_header %}{% endblock content_header %}
+    </div>
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                {% block form_header %}{% endblock form_header %}
+            </div>
+            <div class="card-content">
+                <div class="card-content-element">
+                    <form method="post" enctype="{% block form_enctype %}{% endblock form_enctype %}">
+                        {% csrf_token %}
+                        {% include 'includes/form.html' %}
+
+                        <div class="card-content-options">
+                            {% block form_buttons %}{% endblock form_buttons %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

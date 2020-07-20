@@ -1,0 +1,29 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+i {
+    color: #2e3132;
+}
+button, input[type='submit'] {
+    outline: none;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    display: none;
+}
+p {
+    word-break: break-all;
+    font-size: 0.8rem;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+li {
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+}

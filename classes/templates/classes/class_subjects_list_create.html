@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Disciplinas da turma {{ class.grade }}º {{ class.abc }} - {{ class.get_years_range }}
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-header-title">
+                Adicionar Disciplina
+            </div>
+        </div>
+        <div class="card-content">
+            <form method="post">
+                {% csrf_token %}
+                {% include 'includes/form.html' %}
+                <input type="submit" class="input-submit">
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-header-title">
+                Disciplinas
+            </div>
+        </div>
+        <div class="bench">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Professor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for class_subject in class.subjects.all %}
+                        <tr>
+                            <td>{{ class_subject.subject.name }}</td>
+                            <td>{{ class_subject.teacher.get_full_name }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

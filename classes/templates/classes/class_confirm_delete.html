@@ -1,0 +1,17 @@
+{% extends 'layouts/confirm_delete.html' %}
+{% block content_header %}
+    <div class="header-title">
+        Turma
+    </div>
+{% endblock content_header %}
+{% block form_header %}
+    <div class="card-header-title">
+        Eliminar Turma: {{ class }}
+    </div>
+{% endblock %}
+{% block form_buttons %}
+    <input type="submit" class="red" value="Eliminar">
+    <a href="{% url 'classes:list' %}">
+        <button type="button" class="grey-inverted no-border">Cancelar</button>
+    </a>
+{% endblock form_buttons %}

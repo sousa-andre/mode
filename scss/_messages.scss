@@ -1,0 +1,38 @@
+.messages {
+    padding: 15px 0;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.message {
+    padding: 20px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+    &.error {
+        background-color: #f2dede;
+        border-color: #9f6b86;
+        color: #bb6b6a;
+    }
+    &.success {
+        background-color: #dff0d8;
+        border-color: #5e7553;
+        color: #677f5b;
+    }
+    &.warning {
+        background-color: #fcf8e3;
+        border-color: #a69a71;
+        color: #a79b72;
+    }
+    &.info {
+        background-color: #d9edf7;
+        border-color: #446474;
+        color: #4e7386;
+    }
+}
+
+

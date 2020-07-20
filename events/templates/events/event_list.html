@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Atividades
+        </div>
+        <div class="header-content">
+            Atividades e eventos organizados na escola.
+        </div>
+        <div class="header-options">
+            {% if perms.events.manage_event %}
+                <a href="{% url 'events:create' %}"><button>Criar</button></a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="page">
+        {% for event in events %}
+            <div class="card">
+                {% include 'events/includes/dropdown.html' %}
+                <div class="card-content">
+                    <div class="text-1_2"><a href="{% url 'events:detail' event.id %}">{{ event.title }}</a></div>
+                    <div class="text-0_8 mt-5">
+                        <i class="fas fa-calendar-alt"></i>
+                        Publicado a {{ event.created_at|date:'d/m/Y à\s H:i' }}
+                    </div>
+                    <div class="card-content-image">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" style="height: 80px" alt="Imagem da atividade">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Sem atividades</p>
+        {% endfor %}
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script src="{% static 'scripts/card-menu.js' %}"></script>
+{% endblock %}

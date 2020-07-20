@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            A minha turma
+        </div>
+        <div class="header-content">
+            Aqui, pode-se encontrar todos os ficheiros as diciplinas e a agenda da turma.
+        </div>
+    </div>
+    <div class="page">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Disciplinas
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="list">
+                    {% for subject in request.user_subjects %}
+                        <a href="{% url 'klass:subject-detail' subject.pk %}">
+                            <div class="list-item">
+                                <div class="text-content">{{ subject }}</div>
+                                <div class="text-side">{{ subject.teacher.get_full_name }}</div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Agenda {{ appointments }}
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="list">
+                    {% for subject in request.user_subjects.all %}
+                        {% for appointment in subject.appointments.filter %}
+                        <div class="list-item">
+                            <div class="text-1_2">{{ appointment.title }}</div>
+                            <div class="text-1 mt-5">{{ appointment.content }}</div>
+                            <div class="text-1 mt-10">{{ appointment.happens_at }} das {{ appointment.starts_at }} às {{ appointment.ends_at }}</div>
+                            <div class="text-0_8 mt-5">{{ appointment.subject }} por {{ appointment.subject.teacher.get_full_name }}</div>
+                        </div>
+                        {% endfor %}
+                    {% empty %}
+                        <p>Sem disciplinas</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

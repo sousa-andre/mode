@@ -1,0 +1,62 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Fórum
+        </div>
+        <div class="header-options">
+            <a href="{% url 'forum:create' %}">
+                <button>Criar um novo tópico</button>
+            </a>
+        </div>
+    </div>
+    <div class="page">
+    {% for post in posts %}
+        <div class="card">
+            <div class="card-content">
+               {% include 'forum/includes/dropdown.html' %}
+                <div class="text-1_2"><a href="{% url 'forum:detail' post.pk %}">{{ post.title }}</a></div>
+                <div class="text-1 mt-5 aligned">
+                    <img alt="foto do utilizador" src="{{ post.author.picture.url }}" width="40" class="round">
+                    <div class="ml-5">{{ post.author.get_full_name }}</div>
+                </div>
+                <div class="like-buttom mt-10" onclick="createLike({{ post.id }}, this)" style="cursor: pointer">
+                    <span class="icon">
+                        {% if post.is_liked %}
+                            <i class="fas fa-heart"></i>
+                        {% else %}
+                            <i class="far fa-heart"></i>
+                        {% endif %}
+                    </span>
+                    <span class="number">{{ post.interactions.count }}</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <script>
+        const createLike = async (postId, button) => {
+            let request = await fetch('http://localhost:8000/forum/api/gostar/', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({postId, type: 'LIKE'})
+            });
+            console.log(request.status)
+
+            let number = button.querySelector('.number');
+            let icon = button.querySelector('.icon');
+            if (request.status === 200) {
+                number.innerHTML = (+number.innerHTML + 1).toString();
+                icon.innerHTML = '<i class="fas fa-heart"></i>';
+
+            } else {
+                number.innerHTML = (+number.innerHTML - 1).toString();
+                icon.innerHTML = '<i class="far fa-heart"></i>';
+            }
+        }
+    </script>
+{% endblock content %}
+{% block scripts %}
+    <script src="{% static 'scripts/card-menu.js' %}"></script>
+{% endblock scripts %}

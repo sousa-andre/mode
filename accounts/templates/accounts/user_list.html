@@ -1,0 +1,57 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <div class="header">
+        <div class="header-title">
+            Todos os Utilizadores
+        </div>
+        <div class="header-options">
+            <a href="{% url 'accounts:create' %}">
+                <button>Adicionar Utilizador</button>
+            </a>
+        </div>
+    </div>
+    <div class="page">
+        {% if form %}
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        Criar novo Utilizador
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Listagem de Utilizadores
+                </div>
+            </div>
+            <div class="card-content">
+                {% include 'includes/search.html' %}
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Grupos</th>
+                            <th>Opções</th>
+                        </tr>
+                        {% for user in users.all %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.get_full_name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.groups.all|join:', ' }}</td>
+                                <td>{% if request.user.is_superuser %}<a href="{% url 'accounts:update' user.id %}"><button class="yellow">Atualizar</button></a>{% endif %}</td>
+                            </tr>
+                        {% empty %}
+                            <p>Sem registos</p>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% include 'includes/pagination.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
