@@ -1,11 +1,11 @@
 language: python
-  python: 
-    - "3.7"
-    - "3.8"
+python: 
+  - "3.7"
+  - "3.8"
 
-  env:
-    - pip install pipenv
-    - pipenv run
+env:
+  - pip install pipenv
+  - pipenv run
 
-  script:
-    - py manage.py test
+script:
+  - py manage.py test
