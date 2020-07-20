@@ -5,7 +5,6 @@ python:
 
 env:
   - pip install pipenv
-  - pipenv run
 
 script:
-  - python manage.py test
+  - pipenv run python manage.py test
