@@ -6,6 +6,3 @@ python:
 env:
   - pip install pipenv
    pipenv install --dev
-
-script:
-  - pipenv run python manage.py test
