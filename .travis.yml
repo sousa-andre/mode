@@ -4,7 +4,8 @@ python:
   - "3.8"
 
 env:
-  - pip install pipenv
+  - pip install pipenv~
+  - pipenv install --dev
 
 script:
   - pipenv run python manage.py test
